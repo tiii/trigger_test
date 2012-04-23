@@ -1,3 +1,8 @@
+.template
+development
+src/identity.json
+forge-error.log
+
 *.gem
 *.rbc
 .bundle

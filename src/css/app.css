@@ -1,0 +1,32 @@
+body {
+	overflow-x: hidden;
+	width: 320px;
+	min-height: 460px;
+	font-family: museo, Arial, Helvetica, sans-serif;
+	color:white;
+	-webkit-font-smoothing:antialiased;
+	-moz-font-smoothing:antialiased;
+	-o-font-smoothing:antialiased;
+	font-smooth:auto;
+	font-size: 16px;
+	background-color: black;
+	margin: 0px;
+}
+
+.page {
+	position: absolute;
+	width: 320px;
+	height: 100%;
+	text-align:center;
+}
+
+.picture-container {
+	margin: 20px;
+	padding:5px;
+	width: 280px;
+	height: 280px;
+	text-align:center;
+	box-shadow: 2px 0px 0px #898989, 0px 2px 0px #898989;
+	border: 2px #444 dashed;
+	background-color: #898989;
+}

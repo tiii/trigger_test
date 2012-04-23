@@ -1,0 +1,31 @@
+{
+	"author": "detitusr@gmail.com", 
+	"config_version": "2", 
+	"description": "Trigger.io Test Project", 
+	"modules": {
+		"button": {
+			"default_icon": "img/logo-forge.png", 
+			"default_popup": "index.html"
+		}, 
+		"debug": true,
+		"event": true, 
+		"file": true, 
+		"geolocation": true,
+		"is": true, 
+		"logging": {
+			"level": "INFO"
+		}, 
+		"prefs": true,
+		"request": {
+			"permissions": [
+				"http://localhost:9393/*"
+			]
+		},
+		"tabbar": true, 
+		"tabs": true,
+		"tools": true
+	}, 
+	"name": "trigger_test", 
+	"platform_version": "v1.3", 
+	"version": "0.1"
+}
