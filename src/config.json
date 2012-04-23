@@ -18,7 +18,8 @@
 		"prefs": true,
 		"request": {
 			"permissions": [
-				"http://triggertest-backend.herokuapp.com/*"
+				"http://triggertest-backend.herokuapp.com/*",
+				"http://localhost:9393/*"
 			]
 		},
 		"tabbar": true, 

@@ -54,9 +54,13 @@ var myTabBar = {
     forge.tabbar.removeButtons();
   },
   addButtonToBar: function(identifier, button) {
-    this.buttons[identifier] = button;    
-    if(forge.prefs.get('curPage') === identifier)
-      button.setActive;
+    page = null;
+    forge.prefs.get('curPage',function(val) {
+      page = val;
+    });
+    this.buttons[identifier] = button;
+    if(page === identifier)
+      button.setActive();
   },
   removeButtonWithIdentifier: function(identifier) {
     this.buttons[identifier].remove();
