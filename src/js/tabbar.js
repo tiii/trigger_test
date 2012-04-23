@@ -1,7 +1,5 @@
 forge.debug = true;
 
-forge.logging.info("curPage: "+forge.prefs.get('curPage'));
-
 var myTabBar = {
   // Properties
   buttons: {},
@@ -9,7 +7,7 @@ var myTabBar = {
   // Methods
   init: function() {
     var self = this;
-    this.removeAllButtons();
+    self.removeAllButtons();
 
     forge.tabbar.addButton({
       icon: "img/list.png",
@@ -19,9 +17,7 @@ var myTabBar = {
         self.addButtonToBar('list',button);
 
         button.onPressed.addListener(function() {
-          forge.logging.info("Set curPage: "+"list");
           forge.prefs.set('curPage','list');
-          forge.logging.info("curPage: "+forge.prefs.get('curPage'));
           window.location.href = "list.html";
         });
       }
@@ -35,17 +31,8 @@ var myTabBar = {
         self.addButtonToBar('camera',button);
 
         button.onPressed.addListener(function() {
-          forge.prefs.set('curPage','camera');
-
+          forge.prefs.set('curPage','camera', function() {alert("worked");}, function(e) {alert(e);});
           window.location.href = "camera.html";
-          // forge.tabs.openWithOptions({
-          //     url: "camera.html",
-          //     title: "Take Snapshot"
-          //   },
-          //   function(data) {
-          //     forge.logging.log(data.url);
-          //   }
-          // );
         }
       );
     });
@@ -54,17 +41,19 @@ var myTabBar = {
     forge.tabbar.removeButtons();
   },
   addButtonToBar: function(identifier, button) {
-    page = null;
-    forge.prefs.get('curPage',function(val) {
-      page = val;
-    });
     this.buttons[identifier] = button;
-    if(page === identifier)
+    if(this.getCurrentPage() === identifier)
       button.setActive();
   },
   removeButtonWithIdentifier: function(identifier) {
     this.buttons[identifier].remove();
+  },
+  getCurrentPage: function() {
+    var page = null;
+    forge.prefs.get('curPage',function(val) { page = val; });
+    return page;
   }
 };
-
+ 
 myTabBar.init();
+forge.logging.info("curPage: "+myTabBar.getCurrentPage());

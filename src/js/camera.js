@@ -7,7 +7,7 @@ $(document).ready(function() {
     forge.file.getImage({
         width: 320,
         height: $('.page').height()
-      }, 
+      },
       function(file) {
         // success
         forge.logging.debug(file);
@@ -29,13 +29,8 @@ $(document).ready(function() {
   $('.upload-button').bind('click', function() {
 
     forge.request.ajax({
-      type: "POST",
       url: "http://localhost:9393/upload",
-      data: {
-        name: picture.name,
-        uuid: forge.tools.UUID()
-      },
-      files: [picture],
+      files: [picture, picture],
       success: function() {
         window.location.href = 'list.html';
       }
