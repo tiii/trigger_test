@@ -22,7 +22,8 @@
 				"http://localhost:9393/*"
 			]
 		},
-		"tabbar": true, 
+		"tabbar": true,
+		"topbar": true, 
 		"tabs": true,
 		"tools": true
 	}, 

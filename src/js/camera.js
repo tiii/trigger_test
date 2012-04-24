@@ -1,8 +1,6 @@
+forge.debug = true;
+
 $(document).ready(function() {
-  var picture;
-
-  $('.upload-button').hide();
-
   $('.add-picture-button').bind('click', function(e) {
     forge.file.getImage({
         width: 320,
@@ -13,12 +11,9 @@ $(document).ready(function() {
         forge.logging.debug(file);
         var url = forge.file.URL(file, function(imageUrl) {
           if(imageUrl !== undefined) {
-            $('.picture-container').append('<img src="'+imageUrl+'">');
-            $('.add-picture-button').hide();
-            $('.upload-button').show();
+            $('#pictureList').append('<img src="'+imageUrl+'"/>');
           }
         });
-        picture = file;
       }, function(e) {
         // error
         alert("error! "+e);
@@ -26,15 +21,35 @@ $(document).ready(function() {
     );
   });
 
-  $('.upload-button').bind('click', function() {
-
-    forge.request.ajax({
-      url: "http://localhost:9393/upload",
-      files: [picture, picture],
-      success: function() {
-        window.location.href = 'list.html';
-      }
-    });
-
+  forge.topbar.setTitle("Photo Gallery", function(){
+    forge.logging.info("Topbar title set.");
+  }, function(e){
+    forge.logging.error("Topbar title not set: "+e.message);
   });
+
+  forge.topbar.setTitleImage("../img/camera.png", function(){
+    forge.logging.info("Topbar titleImage set.");
+  }, function(e){
+    forge.logging.error("Topbar titleImage not set: "+e.message);
+  });
+
+  forge.topbar.setTint([255,255,255], function(){
+    forge.logging.info("Topbar tint set.");
+  }, function(e){
+    forge.logging.error("Topbar tint not set: "+e.message);
+  });
+
+  // $('.store-button').bind('click', function() {
+
+
+
+  //   // forge.request.ajax({
+  //   //   url: "http://localhost:9393/upload",
+  //   //   files: [picture, picture],
+  //   //   success: function() {
+  //   //     window.location.href = 'list.html';
+  //   //   }
+  //   // });
+
+  // });
 });
